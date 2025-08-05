@@ -1,4 +1,5 @@
-Automating the process to identify ribbon links in LinkInfo
+Automating the process to identify ribbon links up to 14 crossings
+(data up to 11 crossings found in LinkInfo, 12-14 crossings extracted from a snappy object)
 
 Obstructions used to filter for potential ribbon links:
  - Alexander polynomial 0
