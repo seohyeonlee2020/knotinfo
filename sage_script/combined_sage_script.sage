@@ -81,7 +81,7 @@ def check_products(row):
 				#print(f'check for component {i} of link {linkname} failed for some other reason')
 				manual_check_needed.append((linkname, i))
 
-	print(linkname, mod(det_product, 32) == mod(jones_det, 32))
+	#print(linkname, mod(det_product, 32) == mod(jones_det, 32))
 	row['mod32_condition'] = (mod(det_product, 32) == mod(jones_det, 32))
 	return row
 
@@ -89,7 +89,7 @@ df = df.apply(check_products, axis = 1)
 
 manually_checked_ribbons = []
 for linkname, sublink_id in manual_check_needed:
-	print(linkname, sublink_id)
+	#print(linkname, sublink_id)
 	sublnk = snappy.Link(linkname).sublink(sublink_id).exterior().identify()
 
 	sublink_det = 1
@@ -97,12 +97,12 @@ for linkname, sublink_id in manual_check_needed:
 		try:
 			#print(item)
 			sublink_det = snappy.Manifold(item).determinant()
-			print('try caluse worked')
-			print(sublink_det)
+			#print('try caluse worked')
+			#print(sublink_det)
 		except:
 			pass
 
-	print(sublnk, sublink_det)
+	#print(sublnk, sublink_det)
 	link_jones_det = int(df.loc[df['name_unoriented'] == linkname]['jones_determinant'])
 
 	if (mod(sublink_det, 32) == mod(link_jones_det, 32)):
